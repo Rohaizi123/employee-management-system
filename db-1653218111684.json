@@ -1,0 +1,36 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Amin",
+      "email": "amin@email.com",
+      "phone": "010-99222",
+      "address": "Bangi, Selangor",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "Aman",
+      "email": "aman@email.com",
+      "phone": "011-99222",
+      "address": "Bangi, Selangor",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "Amru",
+      "email": "amru@email.com",
+      "phone": "011-99222",
+      "address": "Bangi, Selangor",
+      "status": false
+    },
+    {
+      "id": 4,
+      "name": "Angah",
+      "email": "angah@email.com",
+      "phone": "012-99222",
+      "address": "Bangi, Selangor",
+      "status": false
+    }
+  ]
+}
