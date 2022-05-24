@@ -24,6 +24,8 @@ the below command
 ```
 npx json-server --watch data/db.json
 ```
+You can find the backup data, db-1653218111684.json. You can copy the data into
+the db.json file inside the data folder.
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
