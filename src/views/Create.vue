@@ -6,7 +6,7 @@
                 Back 
             </button>
         </div>
-            <form @submit.prevent="updateEmployee">
+            <form @submit.prevent="createEmployee">
                 <div class="card-body">
                     <div class="container-fluid px-1 py-5 mx-auto">
                         <div class="row d-flex justify-content-center">
@@ -51,7 +51,7 @@
                                     </form>
                                     <div class="row justify-content-end">
                                         <div class="form-group col-sm-6">
-                                            <button type="submit" class="btn-block btn-primary">Update</button> 
+                                            <button type="submit" class="btn-block btn-primary">Create</button> 
                                         </div>
                                     </div>
                                 </div>
@@ -66,37 +66,30 @@
 
 <script>
 export default {
-    props: ['id'],
     data() {
         return {
-            employee: [],
+            employee: {
+                name: '',
+                email: '',
+                phone: '',
+                address: '',
+                status: null
+            },
             errors : null
         }
     },
-    created() {
-        fetch('http://localhost:3000/employees/' + this.id)
-            .then((res) => res.json())
-            .then((data) => (this.employee = data))
-            .catch((err) => console.log(err.message));
-    },
     methods: {
-        updateEmployee() {
-            fetch('http://localhost:3000/employees/' + this.id, {
-                method: 'PUT',
+        createEmployee() {
+            fetch('http://localhost:3000/employees', {
+                method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
                 },
-                body: JSON.stringify({
-                    name: this.employee.name,
-                    email: this.employee.email,
-                    phone: this.employee.phone,
-                    address: this.employee.address,
-                    status: this.employee.status
-                }),
+                body: JSON.stringify(this.employee),
             })
             .then((response) => {
                 console.log(response.status);
-                if (response.status == 200) {
+                if (response.status == 201) {
                     this.$router.push('/');
                 }
             })
