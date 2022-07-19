@@ -1,44 +1,22 @@
 <template>
-	<div class="col-md-12">
-		<h1>Employee Management System</h1>
-            <div class="button">
-                <button @click="createEmployee" class="btn btn-primary btn-sm">
-                    Create
-                </button>
-            </div>
-            <table id="table" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tr v-for="employee in employees" :key="employee.id" v-on:reloadlist="getEmployees()">
-                    <td>{{ employee.name }}</td>
-                    <td>{{ employee.email }}</td>
-                    <td>{{ employee.address }}</td>
-                    <td>{{ employee.phone }}</td>
-                    <td v-if="employee.status">Active</td>
-                    <td v-else>Not Active</td>
-                    <td class="d-flex flex-row">
-                        <div class="flex">
-                            <router-link :to="{ name: 'Detail', params: { id: employee.id } }">
-                                <button class="btn btn-primary btn-sm">Detail</button>
-                            </router-link>
-                            <button @click="deleteEmployee(employee.id)" class="btn btn-danger btn-sm ml-2" disabled>Delete</button>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-	</div>
+    <div class="col-md-12">
+        <h1>Employee Management System</h1>
+        <div class="button">
+            <button @click="createEmployee" class="btn btn-primary btn-sm">
+                Create
+            </button>
+        </div>
+        <list-view-component v-on:reloadlist="getEmployees()" :employees="employees"></list-view-component>
+    </div>
 </template>
 
 <script>
-export default {
+import ListViewComponent from "./components/ListViewComponent"
+
+export default {    
+    components: {
+        ListViewComponent
+    },
 	data() {
 		return {
 			employees: {},
